@@ -2,6 +2,12 @@
 
 require_once 'Connection.php';
 
+class productImg {
+
+
+}
+
+
 Class Product {
 
  private $table= 'products';
@@ -44,6 +50,7 @@ Class Product {
     return false;
    }
 }
+
 
 
 
