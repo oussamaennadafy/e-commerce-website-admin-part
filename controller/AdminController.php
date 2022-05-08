@@ -94,7 +94,7 @@ class AdminController {
           if(!empty($_POST['colors'])) {
            //store product...
            $product = new product();
-           $product->insert($_POST['name'],$_POST['description'],$_POST['category'],$_POST['description']);
+           $product->insert($_POST['name'],$_POST['description'],$_POST['category'],$_POST['colors']);
 
           }else {
            $colors = true;

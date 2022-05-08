@@ -53,7 +53,7 @@ function __construct($name_item , $description_item , $tags_item , $category_ite
   $ctn = new Connection();
   $ctn->insert(
    $this->table,
-   ['name_item','description_item','tages_item','category_item','colors','price_item','orders','sizes'],
+   ['name_item','description_item','tages_item','category_item','colors','price_item','sizes'],
    [$this->name_item,$this->description_item,$this->tages_item,$this->category_item,$this->colors,$this->price_item,$this->orders,$this->sizes]
  );
  }
