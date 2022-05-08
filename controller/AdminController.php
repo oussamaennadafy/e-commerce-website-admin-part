@@ -42,19 +42,18 @@ class AdminController {
        $fileName = $_FILES['file']['name'][$i];
        $fileSize = getimagesize($_FILES["file"]["tmp_name"][$i]);
        $img_dir = 'view/uploads/';
-       $target_file = '/view/uploads/' . basename($_FILES["file"]["name"][$i]);
+       $target_file = 'view/uploads/' . basename($_FILES["file"]["name"][$i]);
        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-       // $sql = "INSERT INTO fileup(id,name) VALUES ('$filename','$filename')";
-       move_uploaded_file($_FILES['file']['tmp_name'][$i],$img_dir.$fileName);
        if($fileSize == true) {
-        echo $target_file;
-        echo '<br>';
-        echo file_exists($target_file);
-        if(file_exists($target_file)) {
+        if(!file_exists($target_file)) {
          if($_FILES["file"]["size"][$i] < 2000000) {
           if($imageFileType == 'jpg' || $imageFileType == 'png' || $imageFileType == 'jpeg') {
-           //upload and store img...
+           //upload img...
            move_uploaded_file($_FILES['file']['tmp_name'][$i],$img_dir.$fileName);
+           //store img...
+           // $id = uniqid();
+           // $img = new ProductImg($fileName,$img_dir,$id);
+           // $img->insertProductImg();
            $img_passed++;
           } else {
            $FileType = true;
@@ -94,8 +93,9 @@ class AdminController {
          if(!empty($_POST['sizes'])) {
           if(!empty($_POST['colors'])) {
            //store product...
-           echo 'passed';
-           echo '<br>';
+           $product = new product();
+           $product->insert($_POST['name'],$_POST['description'],$_POST['category'],$_POST['description']);
+
           }else {
            $colors = true;
            echo 'colores empty';
