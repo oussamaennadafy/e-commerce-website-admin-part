@@ -251,7 +251,7 @@
                   <select
                   multiple
                     class="block appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
-                    name='sizes'
+                    name='sizes[]'
                   >
                     <option value='XS'>XS</option>
                     <option value='S'>S</option>
@@ -280,7 +280,7 @@
                   <select
                     multiple
                     class="block appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
-                    name='colors'
+                    name='colors[]'
                   >
                     <option value='black'>Black</option>
                     <option value='blue'> Blue</option>

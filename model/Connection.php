@@ -63,7 +63,7 @@ class Connection {
 		$str="INSERT INTO `$table`(".$names.") VALUES (".$values.")";
 		$query=$this->conn->prepare($str);
 		$query->execute();
-		return $id = $this->conn->lastInsertId();
+		return $this->conn->lastInsertId();
 	}
 
 
