@@ -29,11 +29,13 @@ function __construct($name_item , $description_item , $tages_item , $category_it
 
  public function insertProduct() {
   $ctn = new Connection();
-  $ctn->insert(
+  return $ctn->insertProduct(
    $this->table,
    ['name_item','description_item','tages_item','category_item','colors','price_item','sizes'],
    [$this->name_item,$this->description_item,$this->tages_item,$this->category_item,$this->colors,$this->price_item,$this->orders,$this->sizes]
- );
+  ); 
+
+
  }
 
 

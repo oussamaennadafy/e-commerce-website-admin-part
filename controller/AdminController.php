@@ -94,8 +94,18 @@ class AdminController {
           if(!empty($_POST['colors'])) {
            //store product...
            $product = new product($_POST['name'],$_POST['description'],$_POST['tages'],$_POST['category'],$_POST['colors'],$_POST['price'],$_POST['sizes']);
-           $product->insertProduct();
-           
+           $idProduct = $product->insertProduct();
+           //imgs
+           for($i=0;$i<count($_FILES['file']['name']);$i++){
+            $img_dir = 'view/uploads/';
+            $fileName = $_FILES['file']['name'][$i];
+            //upload img...
+            move_uploaded_file($_FILES['file']['tmp_name'][$i],$img_dir.$fileName);
+            //store img...
+            $img = new ProductImg($fileName,$img_dir,$idProduct);
+            $img->insertProductImg();
+           }
+
           }else {
            $colors = true;
            echo 'colores empty';
