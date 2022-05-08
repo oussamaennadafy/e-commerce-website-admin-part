@@ -1,5 +1,6 @@
 <?php
 
+include_once __DIR__.'./../model/product.php';
 
 class AdminController {
 
@@ -40,15 +41,20 @@ class AdminController {
       for($i=0;$i<$countfiles;$i++){
        $fileName = $_FILES['file']['name'][$i];
        $fileSize = getimagesize($_FILES["file"]["tmp_name"][$i]);
-       $target_file = 'view/uploads/' . basename($_FILES["file"]["name"][$i]);
+       $img_dir = 'view/uploads/';
+       $target_file = '/view/uploads/' . basename($_FILES["file"]["name"][$i]);
        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
        // $sql = "INSERT INTO fileup(id,name) VALUES ('$filename','$filename')";
+       move_uploaded_file($_FILES['file']['tmp_name'][$i],$img_dir.$fileName);
        if($fileSize == true) {
-        if(!file_exists($target_file)) {
+        echo $target_file;
+        echo '<br>';
+        echo file_exists($target_file);
+        if(file_exists($target_file)) {
          if($_FILES["file"]["size"][$i] < 2000000) {
           if($imageFileType == 'jpg' || $imageFileType == 'png' || $imageFileType == 'jpeg') {
            //upload and store img...
-           move_uploaded_file($_FILES['file']['tmp_name'][$i],'view/uploads/'.$fileName);
+           move_uploaded_file($_FILES['file']['tmp_name'][$i],$img_dir.$fileName);
            $img_passed++;
           } else {
            $FileType = true;
@@ -62,7 +68,7 @@ class AdminController {
          }
         } else {
          $file_exist = true;
-         echo 'product already exist';
+         echo 'image already exist';
          echo '<br>';
         }
        } else {

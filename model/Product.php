@@ -3,6 +3,23 @@
 require_once 'Connection.php';
 
 class productImg {
+  private $table= 'product_img';
+  private $id;
+  private $name;
+  private $img_dir;
+  private $product_id;
+
+  function __construct($id,$name,$img_dir,$product_id) {
+    $this->id = $id;
+    $this->name = $name;
+    $this->img_dir = $img_dir;
+    $this->product_id = $product_id;
+  }
+
+  public function insertProductImg() {
+    $ctn = new Connection;
+    $ctn->insert($this->table,['id','name','img_dir','product_id'],[$this->id,$this->name,$this->img_dir,$this->product_id]);
+  }
 
 
 }
@@ -12,44 +29,36 @@ Class Product {
 
  private $table= 'products';
  private $id;
- private $first_name;
- private $last_name;
- private $phone_number;
- private $email;
- private $address;
- private $password;
+ private $name_item;
+ private $description_item;
+ private $tags_item;
+ private $category_item;
+ private $colors;
+ private $price_item;
+ private $orders;
+ private $sizes;
  
- function __construct($first_name,$last_name,$phone_number,$email,$address,$password)
+function __construct($id , $name_item , $description_item , $tags_item , $category_item , $colors , $price_item , $orders , $sizes)
  {
-  $this->first_name = $first_name;
-  $this->last_name = $last_name;
-  $this->phone_number = $phone_number;
-  $this->email = $email;
-  $this->password = $password;
-  $this->address = $address;
+  $this->id = $id;
+  $this->name_item = $name_item;
+  $this->description_item = $description_item;
+  $this->tages_item = $tages_item;
+  $this->category_item = $category_item;
+  $this->colors = $colors;
+  $this->price_item = $price_item;
+  $this->orders = $orders;
+  $this->sizes = $sizes;
  }
 
- public function insertUser() {
+ public function insertProduct() {
   $ctn = new Connection();
   $ctn->insert(
    $this->table,
-   ['first_name','last_name','phone_number','email_address','address','password'],
-   [$this->first_name,$this->last_name,$this->phone_number,$this->email,$this->address,$this->password]
+   ['name_item','description_item','tages_item','category_item','colors','price_item','orders','sizes'],
+   [$this->name_item,$this->description_item,$this->tages_item,$this->category_item,$this->colors,$this->price_item,$this->orders,$this->sizes]
  );
  }
-
- public static function checkUser($email,$password) {
-  $ctn=new Connection();
-  $query=$ctn->getconn()->prepare("SELECT * FROM `users` where `email_address` = '$email' AND `password` = '$password'");
-		$query->execute();
-  $count = $query->rowCount();
-  $row   = $query->fetch(PDO::FETCH_ASSOC);
-  if($count == 1 && !empty($row)) {
-    return $row;
-   } else {
-    return false;
-   }
-}
 
 
 
