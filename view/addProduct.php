@@ -253,14 +253,14 @@
                     class="block appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
                     name='sizes'
                   >
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>LG</option>
-                    <option>XL</option>
-                    <option>2XL</option>
-                    <option>3Xl</option>
-                    <option>4Xl</option>
+                    <option value='XS'>XS</option>
+                    <option value='S'>S</option>
+                    <option value='M'>M</option>
+                    <option value='LG'>LG</option>
+                    <option value='XL'>XL</option>
+                    <option value='2XL'>2XL</option>
+                    <option value='3XL'>3Xl</option>
+                    <option value='4XL'>4Xl</option>
                   </select>
                   <i class="absolute inset-y-0 right-0 p-2 text-gray-400">
                     <svg

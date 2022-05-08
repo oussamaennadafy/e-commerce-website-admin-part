@@ -49,7 +49,7 @@ class AdminController {
          if($_FILES["file"]["size"][$i] < 2000000) {
           if($imageFileType == 'jpg' || $imageFileType == 'png' || $imageFileType == 'jpeg') {
            //upload img...
-           move_uploaded_file($_FILES['file']['tmp_name'][$i],$img_dir.$fileName);
+           // move_uploaded_file($_FILES['file']['tmp_name'][$i],$img_dir.$fileName);
            //store img...
            // $id = uniqid();
            // $img = new ProductImg($fileName,$img_dir,$id);
@@ -93,9 +93,9 @@ class AdminController {
          if(!empty($_POST['sizes'])) {
           if(!empty($_POST['colors'])) {
            //store product...
-           $product = new product();
-           $product->insert($_POST['name'],$_POST['description'],$_POST['tages'],$_POST['category'],$_POST['colors'],$_POST['price'],$_POST['sizes']);
-
+           $product = new product($_POST['name'],$_POST['description'],$_POST['tages'],$_POST['category'],$_POST['colors'],$_POST['price'],$_POST['sizes']);
+           $product->insertProduct();
+           
           }else {
            $colors = true;
            echo 'colores empty';
