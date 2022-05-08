@@ -25,8 +25,8 @@ function __construct($name_item , $description_item , $tages_item , $category_it
   $this->category_item = $category_item;
   $this->colors = $colors;
   $this->price_item = $price_item;
-  $this->sizes = $sizes;
-  $this->$quantity = $quantity;
+  echo $this->sizes = $sizes;
+  echo $this->quantity = $quantity;
  }
 
  public function insertProduct() {

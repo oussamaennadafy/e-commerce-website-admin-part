@@ -60,6 +60,10 @@ class Connection {
 			$names.=$vrls."`".$tableCln[$i]."`";
 			$values.=$vrls."'".$tableVal[$i]."'";
 		}
+		echo $names;
+		echo '<br>';
+		echo $values;
+		exit;
 		$str="INSERT INTO `$table`(".$names.") VALUES (".$values.")";
 		$query=$this->conn->prepare($str);
 		$query->execute();

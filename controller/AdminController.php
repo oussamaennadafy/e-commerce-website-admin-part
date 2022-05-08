@@ -88,18 +88,17 @@ class AdminController {
          if(!empty($_POST['sizes'])) {
           if(!empty($_POST['colors'])) {
            //transform sizes array to string comma sepperated...
-           $sizesString = '';
-           foreach ($_POST['sizes'] as $element) {
-            $sizesString .= $element . ',';
-           }
-           echo $sizesString = substr($sizesString, 0, -1);
-           echo '<br>';
-           //transform colors array to string comma sepperated...
            $colorsString = '';
            foreach ($_POST['colors'] as $element2) {
             $colorsString .= $element2 . ',';
            }
-           echo $colorsString = substr($colorsString, 0, -1);
+           $colorsString = substr($colorsString, 0, -1);
+           //transform colors array to string comma sepperated...
+           $sizesString = '';
+           foreach ($_POST['sizes'] as $element) {
+            $sizesString .= $element . ',';
+           }
+           $sizesString = substr($sizesString, 0, -1);
            //store product...
            $product = new product($_POST['name'],$_POST['description'],$_POST['tages'],$_POST['category'],$colorsString,$_POST['price'],$sizesString,$_POST['quantity']);
            $idProduct = $product->insertProduct();
