@@ -75,8 +75,8 @@
 
     <section class="container p-6 mx-auto relative">
 
-        <div class='absolute w-5/12 bg-green-400 h-24 rounded translate-x-1/2 right-1/2 top-20 flex items-center justify-center z-10'>
-          <p  class='text-2xl text-white font-semibold'>successfully added</p>
+        <div class='absolute w-5/12 bg-green-400 h-28 rounded translate-x-1/2 right-1/2 flex items-center justify-center z-10'>
+          <p  class='text-3xl text-white font-semibold'>product added successfully</p>
         </div>
         
         <article class="relative bg-gray-500 p-4 sm:p-6 rounded overflow-hidden mb-6">
