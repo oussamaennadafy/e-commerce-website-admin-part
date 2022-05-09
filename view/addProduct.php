@@ -42,7 +42,7 @@
       <!-- aside -->
       <?php include_once 'view/reusables/aside.php';  ?>
       <!-- aside end -->
-      <main class="w-full">
+      <main class="w-full relative">
         <header
           class="h-14 z-10 py-3 bg-white shadow-sm border-b border-gray-200"
         >
@@ -132,6 +132,10 @@
             </ul>
           </div>
         </header>
+
+        <div class='absolute w-4/12 bg-green-400 h-24 rounded top-50 left-100 '>
+          <p>successfully added</p>
+        </div>
 
         <section class="container max-w-3xl p-6 mx-auto">
           <article
