@@ -7,7 +7,7 @@ class AdminController {
 
  public function index() {
   //code..
-  session_dtart();
+  session_start();
   include_once './view/index.php';
   unset($_SESSION['productAdded']);
  }

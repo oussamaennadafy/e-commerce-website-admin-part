@@ -49,9 +49,11 @@
 
         <!-- Search input -->
         <form>
+          <?php if(isset($_SESSION['productAdded'])) { ?>
           <div class="relative">
               <input class="appearance-none border border-transparent bg-transparent rounded-md py-1 px-2 focus:outline-none focus:border-gray-400 w-full" type="text" placeholder="Search for " aria-label="Search">
           </div>
+          <?php } ?>
         </form>
         <ul class="flex items-center flex-shrink-0 space-x-2">
           <li>
