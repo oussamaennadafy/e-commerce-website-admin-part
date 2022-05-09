@@ -107,7 +107,7 @@ class AdminController {
             $img_dir = 'view/uploads/';
             $fileName = $_FILES['file']['name'][$i];
             //upload img...
-            // move_uploaded_file($_FILES['file']['tmp_name'][$i],$img_dir.$fileName);
+            move_uploaded_file($_FILES['file']['tmp_name'][$i],$img_dir.$fileName);
             //store img...
             $img = new ProductImg($fileName,$img_dir,$idProduct);
             $img->insertProductImg();

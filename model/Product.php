@@ -25,16 +25,23 @@ function __construct($name_item , $description_item , $tages_item , $category_it
   $this->category_item = $category_item;
   $this->colors = $colors;
   $this->price_item = $price_item;
-  echo $this->sizes = $sizes;
-  echo $this->quantity = $quantity;
+  $this->sizes = $sizes;
+  $this->quantity = $quantity;
  }
 
  public function insertProduct() {
   $ctn = new Connection();
   return $ctn->insertProduct(
    $this->table,
-   ['name_item','description_item','tages_item','category_item','colors','price_item','sizes' , 'quantity'],
-   [$this->name_item,$this->description_item,$this->tages_item,$this->category_item,$this->colors,$this->price_item,$this->orders,$this->sizes,$this->quantity]
+   ['name_item','description_item','tages_item','category_item','colors','price_item', 'sizes' , 'quantity'],
+   [$this->name_item,
+   $this->description_item,
+   $this->tages_item,
+   $this->category_item,
+   $this->colors,
+   $this->price_item,
+   $this->sizes,
+   $this->quantity]
   ); 
 
  }
