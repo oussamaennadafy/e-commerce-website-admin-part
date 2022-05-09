@@ -133,10 +133,6 @@
           </div>
         </header>
 
-        <div class='absolute w-4/12 bg-green-400 h-24 rounded top-50 left-100 '>
-          <p>successfully added</p>
-        </div>
-
         <section class="container max-w-3xl p-6 mx-auto">
           <article
             class="bg-white rounded shadow-sm border border-gray-200 p-4 lg:p-6 my-5"

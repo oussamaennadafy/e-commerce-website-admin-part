@@ -73,7 +73,12 @@
       </div>
     </header>
 
-    <section class="container p-6 mx-auto">
+    <section class="container p-6 mx-auto relative">
+
+        <div class='absolute w-5/12 bg-green-400 h-24 rounded translate-x-1/2 right-1/2 top-20 flex items-center justify-center z-10'>
+          <p  class='text-2xl text-white font-semibold'>successfully added</p>
+        </div>
+        
         <article class="relative bg-gray-500 p-4 sm:p-6 rounded overflow-hidden mb-6">
           <div class="" aria-hidden="true">
             <h1 class="text-2xl md:text-3xl text-white font-bold mb-1">Good day, ENSON Inc. 👋</h1>
