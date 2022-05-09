@@ -7,11 +7,14 @@ class AdminController {
 
  public function index() {
   //code..
+  session_dtart();
   include_once './view/index.php';
+  unset($_SESSION['productAdded']);
  }
 
  public function addProduct() {
   //code..
+  session_start();
   /////////////////
   $name = false;
   $description = false;
@@ -111,6 +114,7 @@ class AdminController {
             //store img...
             $img = new ProductImg($fileName,$img_dir,$idProduct);
             $img->insertProductImg();
+            $_SESSION['productAdded'] = true;
            }
           }else {
            $colors = true;
