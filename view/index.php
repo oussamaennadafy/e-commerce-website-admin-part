@@ -49,11 +49,9 @@
 
         <!-- Search input -->
         <form>
-          <?php if(isset($_SESSION['productAdded'])) { ?>
           <div class="relative">
               <input class="appearance-none border border-transparent bg-transparent rounded-md py-1 px-2 focus:outline-none focus:border-gray-400 w-full" type="text" placeholder="Search for " aria-label="Search">
           </div>
-          <?php } ?>
         </form>
         <ul class="flex items-center flex-shrink-0 space-x-2">
           <li>
@@ -76,10 +74,13 @@
     </header>
 
     <section class="container p-6 mx-auto relative">
-
+    <?php if(isset($_SESSION['productAdded'])) { ?>
         <div class='pop-up absolute w-5/12 bg-green-400 h-28 rounded translate-x-1/2 right-1/2 flex items-center justify-center z-10 transition'>
           <p  class='text-2xl text-white font-semibold'>product added successfully ✅</p>
         </div>
+    <?php } ?>
+
+
         
         <article class="relative bg-gray-500 p-4 sm:p-6 rounded overflow-hidden mb-6">
           <div class="" aria-hidden="true">
@@ -192,11 +193,11 @@
       options: {}
   });
 
-    const myTimeout = setTimeout(moveAndDisappear, 1600);
+            const myTimeout = setTimeout(moveAndDisappear, 2600);
 
-    function moveAndDisappear() {
-      document.querySelector(".pop-up").classList.add('opacity-0');
-    }
+            function moveAndDisappear() {
+              document.querySelector(".pop-up").classList.add('opacity-0');
+            }
 </script>
 
 </body>

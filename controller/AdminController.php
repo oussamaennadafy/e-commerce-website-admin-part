@@ -115,6 +115,7 @@ class AdminController {
             $img = new ProductImg($fileName,$img_dir,$idProduct);
             $img->insertProductImg();
             $_SESSION['productAdded'] = true;
+            header('Location: http://localhost/fill-rouge-admin/admin/index');
            }
           }else {
            $colors = true;
