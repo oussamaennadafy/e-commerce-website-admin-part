@@ -23,7 +23,7 @@ class AdminController {
   $fake_img = false;
   $file_exist = false;
   $file_size = false;
-  $FileType = false;
+  $fileType = false;
   //
   $img_passed = 0;
   //
@@ -31,7 +31,7 @@ class AdminController {
   $quantity = false;
   $tages = false;
   $price = false;
-  $colores = false;
+  $colors = false;
   $sizes = false;
   /////////////////////
    if(isset($_POST['submit'])) {
@@ -44,8 +44,8 @@ class AdminController {
       for($i=0;$i<$countfiles;$i++){
        $fileName = $_FILES['file']['name'][$i];
        $fileSize = getimagesize($_FILES["file"]["tmp_name"][$i]);
-       $img_dir = 'view/uploads/';
-       $target_file = 'view/uploads/' . basename($_FILES["file"]["name"][$i]);
+       $img_dir = './../fill-rouge/view/uploads/';
+       $target_file = './../fill-rouge/view/uploads/' . basename($_FILES["file"]["name"][$i]);
        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
        if($fileSize == true) {
         if(!file_exists($target_file)) {
@@ -54,30 +54,20 @@ class AdminController {
            //img verified
            $img_passed++;
           } else {
-           $FileType = true;
-           echo 'file is not img';
-          echo '<br>';
+           $fileType = true;
           }
          } else {
           $file_size = true;
-          echo 'img is to large';
-          echo '<br>';
          }
         } else {
          $file_exist = true;
-         echo 'image already exist';
-         echo '<br>';
         }
        } else {
         $fake_img = true;
-        echo 'fake img';
-        echo '<br>';
        }
       }
      } else {
       $files_count = true;
-      echo 'select between 3 and 6 imgs';
-      echo '<br>';
      }
      
      if($img_passed >= 3) {
@@ -89,25 +79,31 @@ class AdminController {
        if(!empty($_POST['tages']) && preg_match($match, $str) ) {
         if(!empty($_POST['price']) && is_numeric($_POST['price'])) {
          if(!empty($_POST['sizes'])) {
-          if(!empty($_POST['colors'])) {
            //transform sizes array to string comma sepperated...
-           $colorsString = '';
-           foreach ($_POST['colors'] as $element2) {
-            $colorsString .= $element2 . ',';
-           }
-           $colorsString = substr($colorsString, 0, -1);
-           //transform colors array to string comma sepperated...
            $sizesString = '';
            foreach ($_POST['sizes'] as $element) {
             $sizesString .= $element . ',';
            }
            $sizesString = substr($sizesString, 0, -1);
+          } else {
+           $sizesString = '';         
+          }
+          if(!empty($_POST['colors'])) {
+           //transform colors array to string comma sepperated...
+           $colorsString = '';
+           foreach ($_POST['colors'] as $element2) {
+            $colorsString .= $element2 . ',';
+           }
+           $colorsString = substr($colorsString, 0, -1);
+          }else {
+           $colorsString ='';        
+          }
            //store product...
            $product = new product($_POST['name'],$_POST['description'],$_POST['tages'],$_POST['category'],$colorsString,$_POST['price'],$sizesString,$_POST['quantity']);
            $idProduct = $product->insertProduct();
            //imgs
            for($i=0;$i<count($_FILES['file']['name']);$i++){
-            $img_dir = 'view/uploads/';
+            $img_dir = './../fill-rouge/view/uploads/';
             $fileName = $_FILES['file']['name'][$i];
             //upload img...
             move_uploaded_file($_FILES['file']['tmp_name'][$i],$img_dir.$fileName);
@@ -117,42 +113,21 @@ class AdminController {
             $_SESSION['productAdded'] = true;
             header('Location: http://localhost/fill-rouge-admin/admin/index');
            }
-          }else {
-           $colors = true;
-           echo 'colores empty';
-          echo '<br>';
-          }
-         } else {
-          $sizes = true;
-          echo 'sizes empty';
-          echo '<br>';
-         }
         } else {
          $price = true;
-         echo 'price empty';
-         echo '<br>';
         }
        } else {
         $tages = true;
-        echo 'tages empty';
-        echo '<br>';
        }
       } else {
        $quantity = true;
-       echo 'quantity empty';
-       echo '<br>';
       }
      }
-
     } else {
      $description = true;
-     echo 'description empty';
-     echo '<br>';
     }
    } else {
     $name = true;
-    echo 'name empty';
-    echo '<br>';
    }
    }
   include_once './view/addProduct.php';

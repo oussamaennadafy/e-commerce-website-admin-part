@@ -75,7 +75,7 @@
 
     <section class="container p-6 mx-auto relative">
     <?php if(isset($_SESSION['productAdded'])) { ?>
-        <div class='pop-up absolute w-5/12 bg-green-400 h-28 rounded translate-x-1/2 right-1/2 flex items-center justify-center z-10 transition'>
+        <div class='pop-up absolute w-5/12 bg-green-400 h-28 rounded -translate-x-1/2 left-1/2 flex items-center justify-center z-10 transition'>
           <p  class='text-2xl text-white font-semibold'>product added successfully ✅</p>
         </div>
     <?php } ?>
@@ -193,7 +193,7 @@
       options: {}
   });
 
-            const myTimeout = setTimeout(moveAndDisappear, 2600);
+            const myTimeout = setTimeout(moveAndDisappear, 1600);
 
             function moveAndDisappear() {
               document.querySelector(".pop-up").classList.add('opacity-0');

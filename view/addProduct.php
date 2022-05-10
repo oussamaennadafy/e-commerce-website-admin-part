@@ -146,34 +146,50 @@
                 <label class="block mb-1"> Name of item </label>
                 <input
                   type="text"
-                  class="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
+                  class="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full
+                  <?php if(isset($_POST['submit'])) { if($name == true) {echo 'border-red-500 hover:border-red-600 focus:border-red-600';}} ?>
+                  "
                   placeholder="Type here"
                   name='name'
                   value="<?php if(isset($_POST['name'])) { echo $_POST['name']; } ?>"
                 />
+                <p class='text-red-500 mt-2'><?php if(isset($_POST['submit'])) { if($name == true) {echo 'name is required';}} ?></p> 
               </div>
 
               <div class="mb-4">
                 <label class="block mb-1"> Description </label>
                 <textarea
                   rows="4"
-                  class="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
+                  class="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full
+                  <?php if(isset($_POST['submit'])) { if($description == true) {echo 'border-red-500 hover:border-red-600 focus:border-red-600';}} ?>
+                  "
                   placeholder="Type here"
                   name='description'
                 ><?php if(isset($_POST['description'])) { echo $_POST['description'];}?></textarea>
+                <p class='text-red-500 mt-2'><?php if(isset($_POST['submit'])) { if($description == true) {echo 'description is required';}} ?></p> 
               </div>
 
               <div class="mb-4 grid grid-cols-2">
                 <div>
                   <label class="block mb-1"> Image upload </label>
                   <input name="file[]" type="file" class="w-72" placeholder="Type here" multiple />
+                  <?php if(isset($_POST['submit'])) { ?>
+                  <p class='text-red-500 mt-2'><?php if($files_count == true) {echo'select between 3 and 6 imgs';} ?></p> 
+                  <p class='text-red-500 mt-2'><?php if($fake_img == true) {echo'some images is null';} ?></p> 
+                  <p class='text-red-500 mt-2'><?php if($file_exist == true) {echo'some images is exist in your store';} ?></p> 
+                  <p class='text-red-500 mt-2'><?php if($file_size == true) {echo'some images is too large';} ?></p> 
+                  <p class='text-red-500 mt-2'><?php if($fileType == true) {echo'please select jpg, png or jpeg';} ?></p> 
+                  <?php } ?>
                 </div>
                 <div>
                   <label class='block mb-1'>Quantity</label>
-                  <input placeholder='Type here' type="number" name="quantity" class='appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full'
-                  value="<?php if(isset($_POST['quantity'])) { echo $_POST['quantity']; } ?>"
-
+                  <input placeholder='Type here' type="number" name="quantity" class='appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full
+                  <?php if(isset($_POST['submit'])) { if($quantity == true) {echo 'border-red-500 hover:border-red-600 focus:border-red-600';}} ?>
+                  '
+                  value="<?php if(isset($_POST['quantity'])) { echo $_POST['quantity']; } ?>" 
                   >
+                  <p class='text-red-500 mt-2'><?php if(isset($_POST['submit'])) { if($quantity == true) {echo 'quantity is required';}} ?></p> 
+
                 </div>
               </div>
 
@@ -181,11 +197,15 @@
                 <label class="block mb-1"> Tags input </label>
                 <input
                   type="text"
-                  class="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
+                  class="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full
+                  <?php if(isset($_POST['submit'])) { if($tages == true) {echo 'border-red-500 hover:border-red-600 focus:border-red-600';}} ?>
+                  "
                   placeholder="Tag, Tag,..."
                   name='tages'
                   value="<?php if(isset($_POST['tages'])) { echo $_POST['tages']; } ?>"
                 />
+                <p class='text-red-500 mt-2'><?php if(isset($_POST['submit'])) { if($tages == true) {echo 'tages is required (tag, tag,...)';}} ?></p> 
+
               </div>
 
               <div class="grid md:grid-cols-2 gap-x-2">
@@ -221,11 +241,15 @@
                   <div>
                     <input
                       type="text"
-                      class="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-64"
+                      class="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-64
+                      <?php if(isset($_POST['submit'])) { if($price == true) {echo 'border-red-500 hover:border-red-600 focus:border-red-600';}} ?>
+                      "
                       placeholder="0.00 USD"
                       name='price'
                       value="<?php if(isset($_POST['price'])) { echo $_POST['price']; } ?>"
                     />
+                    <p class='text-red-500 mt-2'><?php if(isset($_POST['submit'])) { if($price == true) {echo 'price is required';}} ?></p> 
+
                   </div>
                   <div>
                     <select
@@ -250,7 +274,10 @@
                 <div class="relative">
                   <select
                   multiple
-                    class="block appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
+                    class="block appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full
+                    <?php if(isset($_POST['submit'])) { if($sizes == true) {echo 'border-red-500 hover:border-red-600 focus:border-red-600';}} ?>
+
+                    "
                     name='sizes[]'
                   >
                     <option value='XS'>XS</option>
@@ -273,16 +300,20 @@
                     </svg>
                   </i>
                 </div>
+                <p class='text-red-500 mt-2'><?php if(isset($_POST['submit'])) { if($sizes == true) {echo 'choose at least one size';}} ?></p> 
               </div>
               <div class="mb-4">
                 <label class="block mb-1"> Colors </label>
                 <div class="relative">
                   <select
                     multiple
-                    class="block appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
+                    class="block appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full
+                    <?php if(isset($_POST['submit'])) { if($colors == true) {echo 'border-red-500 hover:border-red-600 focus:border-red-600';}} ?>
+                    "
                     name='colors[]'
                   >
                     <option value='black'>Black</option>
+                    <option value='white'>white</option>
                     <option value='blue'> Blue</option>
                     <option value='green'> Green</option>
                     <option value='Turquoise'> Turquoise</option>
@@ -304,6 +335,7 @@
                     </svg>
                   </i>
                 </div>
+                <p class='text-red-500 mt-2'><?php if(isset($_POST['submit'])) { if($colors == true) {echo 'choose at least one color';}} ?></p> 
               </div>
 
 <!-- 
