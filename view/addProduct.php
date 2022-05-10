@@ -312,10 +312,13 @@
                     "
                     name='colors[]'
                   >
-                    <option value='black'>Black</option>
-                    <option value='white'>white</option>
-                    <option value='blue'> Blue</option>
-                    <option value='green'> Green</option>
+                    <option value='Black'>Black</option>
+                    <option value='White'>white</option>
+                    <option value='Blue'> Blue</option>
+                    <option value='Green'> Green</option>
+                    <option value='Yellow'> Yellow</option>
+                    <option value='Red'> Red</option>
+                    <option value='Pink'> Pink</option>
                     <option value='Turquoise'> Turquoise</option>
                     <option value='Chestnut'> Chestnut</option>
                     <option value='Bordeaux'> Bordeaux</option>

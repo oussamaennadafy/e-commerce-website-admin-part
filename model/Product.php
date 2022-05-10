@@ -16,8 +16,9 @@ Class Product {
  private $orders;
  private $sizes;
  private $quantity;
+ private $first_img;
  
-function __construct($name_item , $description_item , $tages_item , $category_item , $colors , $price_item , $sizes , $quantity)
+function __construct($name_item , $description_item , $tages_item , $category_item , $colors , $price_item , $sizes , $quantity , $first_img)
  {
   $this->name_item = $name_item;
   $this->description_item = $description_item;
@@ -27,13 +28,14 @@ function __construct($name_item , $description_item , $tages_item , $category_it
   $this->price_item = $price_item;
   $this->sizes = $sizes;
   $this->quantity = $quantity;
+  $this->first_img = $first_img;
  }
 
  public function insertProduct() {
   $ctn = new Connection();
   return $ctn->insertProduct(
    $this->table,
-   ['name_item','description_item','tages_item','category_item','colors','price_item', 'sizes' , 'quantity'],
+   ['name_item','description_item','tages_item','category_item','colors','price_item', 'sizes' , 'quantity' , 'first_img'],
    [$this->name_item,
    $this->description_item,
    $this->tages_item,
@@ -41,8 +43,10 @@ function __construct($name_item , $description_item , $tages_item , $category_it
    $this->colors,
    $this->price_item,
    $this->sizes,
-   $this->quantity]
+   $this->quantity,
+   $this->first_img]
   ); 
+
 
  }
 

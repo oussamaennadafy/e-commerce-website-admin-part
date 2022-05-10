@@ -98,8 +98,19 @@ class AdminController {
           }else {
            $colorsString ='';        
           }
+          $_POST['name'] = str_replace("'","''",$_POST['name']);
+          $_POST['description'] = str_replace("'","''",$_POST['description']);
            //store product...
-           $product = new product($_POST['name'],$_POST['description'],$_POST['tages'],$_POST['category'],$colorsString,$_POST['price'],$sizesString,$_POST['quantity']);
+           $product = new product(
+             $_POST['name'],
+             $_POST['description'],
+             $_POST['tages'],
+             $_POST['category'],
+             $colorsString,
+             $_POST['price'],
+             $sizesString,
+             $_POST['quantity'],
+             $_FILES['file']['name'][0]);
            $idProduct = $product->insertProduct();
            //imgs
            for($i=0;$i<count($_FILES['file']['name']);$i++){
