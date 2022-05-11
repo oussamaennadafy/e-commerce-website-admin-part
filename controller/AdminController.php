@@ -112,7 +112,9 @@ class AdminController {
               $_POST['price'],
               $sizesString,
               $_POST['quantity'],
-              $_FILES['file']['name'][0]);
+              $_FILES['file']['name'][0],
+              $_POST['brand']
+            );
             $idProduct = $product->insertProduct();
             //imgs
             for($i=0;$i<count($_FILES['file']['name']);$i++){

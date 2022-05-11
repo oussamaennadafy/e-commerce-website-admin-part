@@ -280,7 +280,7 @@
                   name='brand'
                   value="<?php if(isset($_POST['brand'])) { echo $_POST['brand']; } ?>"
                 />
-                <p class='text-red-500 mt-2'><?php if(isset($_POST['submit'])) { if($tages == true) {echo 'brand is required';}} ?></p> 
+                <p class='text-red-500 mt-2'><?php if(isset($_POST['submit'])) { if($brand == true) {echo 'brand is required';}} ?></p> 
 
               </div>
 
