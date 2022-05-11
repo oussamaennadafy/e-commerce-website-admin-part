@@ -268,6 +268,22 @@
                 
               </div>
               <!-- grid -->
+
+              <div class="mb-4">
+                <label class="block mb-1"> Brand </label>
+                <input
+                  type="text"
+                  class="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full
+                  <?php if(isset($_POST['submit'])) { if($brand == true) {echo 'border-red-500 hover:border-red-600 focus:border-red-600';}} ?>
+                  "
+                  placeholder="Type Here..."
+                  name='brand'
+                  value="<?php if(isset($_POST['brand'])) { echo $_POST['brand']; } ?>"
+                />
+                <p class='text-red-500 mt-2'><?php if(isset($_POST['submit'])) { if($tages == true) {echo 'brand is required';}} ?></p> 
+
+              </div>
+
               
               <div class="mb-4">
                 <label class="block mb-1"> sizes </label>
