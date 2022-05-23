@@ -217,9 +217,9 @@
                       name='category'
                     >
                       <option value='OurSports'>Our sports</option>
-                      <option value='mens'>mens</option>
-                      <option value='womens'>womens</option>
-                      <option value='kids'>kids</option>
+                      <option value='mens'>men’s</option>
+                      <option value='womens'>women’s</option>
+                      <option value='kids'>kid’s</option>
                       <option value='accessoires'>accessoires</option>
                     </select>
                     <i class="absolute inset-y-0 right-0 p-2 text-gray-400">

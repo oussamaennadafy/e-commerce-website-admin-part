@@ -90,16 +90,13 @@ class AdminController {
             } else {
             $sizesString = '';         
             }
-            if(!empty($_POST['colors'])) {
             //transform colors array to string comma sepperated...
             $colorsString = '';
             foreach ($_POST['colors'] as $element2) {
               $colorsString .= $element2 . ',';
             }
             $colorsString = substr($colorsString, 0, -1);
-            }else {
-            $colorsString ='';        
-            }
+            ////////////////////
             $_POST['name'] = str_replace("'","''",$_POST['name']);
             $_POST['description'] = str_replace("'","''",$_POST['description']);
             //store product...
