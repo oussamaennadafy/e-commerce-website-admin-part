@@ -153,12 +153,12 @@
 				?>
 					<figure class="flex flex-row mb-4">
 						<div>
-							<a href="http://localhost/fill-rouge/user/details/<?php if(isset($order['size'])){echo $order['product_id']; } else {echo $semi_order_details['product_id']; } ?>" class="block w-20 h-20 rounded border border-gray-200 overflow-hidden">
+							<a class="block w-20 h-20 rounded border border-gray-200 overflow-hidden">
 								<img src="../../../fill-rouge/view/uploads/<?php if(isset($order['size'])) {echo Product::getProductPrice($order['product_id'])['first_img'];} else { echo $semi_order_details['first_img']; }?>" alt="Title">
 							</a>
 						</div>
 						<figcaption  class="ml-3">
-							<p><a href="http://localhost/fill-rouge/user/details/<?php if(isset($order['size'])){echo $order['product_id']; } else {echo $semi_order_details['product_id']; } ?>" class="text-gray-600 hover:text-blue-600"><?php if(isset($order['size'])) {echo Product::getProductPrice($order['product_id'])['name_item'];} else { echo $semi_order_details['name_item']; } ?></a></p>
+							<p><a class="text-gray-600"><?php if(isset($order['size'])) {echo Product::getProductPrice($order['product_id'])['name_item'];} else { echo $semi_order_details['name_item']; } ?></a></p>
 							<p class="mt-1 font-semibold"><?php if(isset($order['size'])) {echo $order['quantity'];}  else { echo $semi_order_details['quantity']; }  ?>x = $<?php if(isset($order['size'])) {echo Product::getProductPrice($order['product_id'])['price_item']*$order['quantity'];}  else { echo $semi_order_details['price_item']; }  ?></p>
 						</figcaption>
 					</figure>
