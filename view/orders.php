@@ -112,7 +112,7 @@
 						<p class="text-gray-500"><?php echo substr(explode('.',$order['created_at'])[0],0,-3) ?> </p>
 					</div>
 					<div>
-						<form action="http://localhost/fill-rouge/user/profile" method="post">
+						<form action="http://localhost/fill-rouge-admin/admin/orders" method="post">
 							<input type='submit' class="px-3 py-1 inline-block text-sm text-red-500 border border-gray-300 rounded-md hover:text-red-500 hover:border-red-600 cursor-pointer" value='Cancel order'name='cancel_order'/>
 							<input value='<?php if(isset($order['size'])) {echo 'my_order';} else {echo 'order_checkout';} ?>' type="hidden" name="type_of_order">
 							<input value='<?php echo $order['id']; ?>' type="hidden" name="order_id">

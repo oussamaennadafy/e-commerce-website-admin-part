@@ -75,6 +75,12 @@ function __construct($name_item , $description_item , $tages_item , $category_it
     return $ctn->selectSemiOrder($id);
   }
 
+  public static function cancelOrder($type_of_order,$order_id)
+  {
+    $ctn = new Connection();
+    return $ctn->cancelOrder($type_of_order,$order_id);
+  }
+
 
 
 }

@@ -37,7 +37,7 @@
         </header>
 
         <ul>
-          <li class="hover:bg-blue-100 relative">
+          <!-- <li class="hover:bg-blue-100 relative">
             <a
               href="http://localhost/fill-rouge-admin/admin/index"
               class="flex px-5 py-3 items-center w-full text-white hover:text-white hover:bg-blue-700"
@@ -62,7 +62,7 @@
               </span>
               <span class="ml-3">Dashboard</span>
             </a>
-          </li>
+          </li> -->
 
           <li class="hover:bg-blue-100 relative">
             <a
@@ -93,7 +93,7 @@
           </li>
 
           
-          <li class="hover:bg-blue-100 relative">
+          <!-- <li class="hover:bg-blue-100 relative">
             <a
               href="http://localhost/fill-rouge-admin/admin/Users"
               class="flex px-5 py-3 items-center w-full text-white hover:text-white hover:bg-blue-700"
@@ -118,11 +118,11 @@
               </span>
               <span class="ml-3">Customers</span>
             </a>
-          </li>
+          </li> -->
           
           <li class="hover:bg-blue-100 relative">
             <a
-              href="#"
+              href="http://localhost/fill-rouge-admin/admin/orders"
               class="flex px-5 py-3 items-center w-full text-white hover:text-white hover:bg-blue-700"
             >
               <span aria-hidden="true">
@@ -148,7 +148,7 @@
             </a>
           </li>
           
-          <li class="hover:bg-blue-100 relative">
+          <!-- <li class="hover:bg-blue-100 relative">
             <a
             href="#"
               class="flex px-5 py-3 items-center w-full text-white hover:text-white hover:bg-blue-700"
@@ -246,7 +246,7 @@
                 >Submenu two</a
               >
             </div>
-          </li>
+          </li> -->
 
 
         </ul>

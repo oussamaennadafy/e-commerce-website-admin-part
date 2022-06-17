@@ -100,6 +100,12 @@ class Connection {
 		return $query->fetch(PDO::FETCH_ASSOC);
 	}
 
+	public function cancelOrder($type_of_order,$order_id)
+	{
+		$query = $this->conn->prepare("DELETE FROM `$type_of_order` WHERE id = $order_id");
+		$query->execute();
+	}
+
 
 
 	public function selectAll($table)
