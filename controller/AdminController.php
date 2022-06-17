@@ -17,6 +17,22 @@ class AdminController {
   $Products = Product::selectAllProducts();
   include_once './view/showProducts.php';
  }
+ public function orders() {
+  //code..
+  $AllOrders = Product::selectAllOrders();
+  $all_orders=array_merge($AllOrders['orders'], $AllOrders['checkout']);
+  $time = array();
+  foreach ($all_orders as $key => $value) {
+      $time[$key]=$value['created_at'];
+  }
+  array_multisort($time, SORT_DESC, $all_orders);
+  //cancel order
+  if(isset($_POST['cancel_order'])) {
+      Product::cancelOrder($_POST['type_of_order'],$_POST['order_id']);
+      header("Refresh:0");
+  }
+  include_once './view/orders.php';
+ }
 
  public function addProduct() {
   //code..

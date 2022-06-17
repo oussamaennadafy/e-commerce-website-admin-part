@@ -57,6 +57,24 @@ function __construct($name_item , $description_item , $tages_item , $category_it
     return $ctn->selectAllProducts('products');
   }
 
+  public static function selectAllOrders()
+  {
+    $ctn = new Connection();
+    return $ctn->selectAllOrders();
+  }
+
+  public static function getProductPrice($product_id)
+  {
+    $ctn = new Connection();
+    return $ctn->getProductPrice($product_id);
+  }
+
+  public static function selectSemiOrder($id)
+  {
+    $ctn = new Connection();
+    return $ctn->selectSemiOrder($id);
+  }
+
 
 
 }

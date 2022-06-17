@@ -74,6 +74,32 @@ class Connection {
 		return $query->fetchAll(PDO::FETCH_ASSOC);
 	}
 
+	public function selectAllOrders()
+	{
+		$query = $this->conn->prepare("SELECT * FROM `my_order` ORDER BY `created_at` DESC");
+		$query->execute();
+		$order=$query->fetchAll(PDO::FETCH_ASSOC);
+
+		$query = $this->conn->prepare("SELECT * FROM `order_checkout` ORDER BY `created_at` DESC");
+		$query->execute();
+		$chechout= $query->fetchAll(PDO::FETCH_ASSOC);
+		return ['orders'=>$order,'checkout'=>$chechout];
+	}
+
+	public function getProductPrice($product_id)
+	{
+		$query = $this->conn->prepare("SELECT `price_item`,`first_img`,`name_item` FROM `products` where id=$product_id");
+		$query->execute();
+		return $query->fetch(PDO::FETCH_ASSOC);
+	}
+
+	public function selectSemiOrder($id)
+	{
+		$query = $this->conn->prepare("SELECT semi_order.* , products.name_item , products.first_img , products.price_item FROM `semi_order` , `products` WHERE semi_order.product_id = products.id AND semi_order.id = '$id'");
+		$query->execute();
+		return $query->fetch(PDO::FETCH_ASSOC);
+	}
+
 
 
 	public function selectAll($table)
