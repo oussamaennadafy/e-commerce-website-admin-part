@@ -12,6 +12,12 @@ class AdminController {
   unset($_SESSION['productAdded']);
  }
 
+ public function showProducts() {
+  //code..
+  $Products = Product::selectAllProducts();
+  include_once './view/showProducts.php';
+ }
+
  public function addProduct() {
   //code..
   session_start();
@@ -80,51 +86,55 @@ class AdminController {
        if(!empty($_POST['tages']) && preg_match($match, $str) ) {
         if(!empty($_POST['price']) && is_numeric($_POST['price'])) {
           if(!empty($_POST['brand']) && preg_match("/^\w+$/u", $_POST['brand'])) {
-           if(!empty($_POST['sizes'])) {
-            //transform sizes array to string comma sepperated...
-            $sizesString = '';
-            foreach ($_POST['sizes'] as $element) {
-              $sizesString .= $element . ',';
+           if(!empty($_POST['colors'])) { 
+            if(!empty($_POST['sizes'])) {
+              //transform sizes array to string comma sepperated...
+              $sizesString = '';
+              foreach ($_POST['sizes'] as $element) {
+                $sizesString .= $element . ',';
+              }
+              $sizesString = substr($sizesString, 0, -1);
+              } else {
+              $sizesString = 'standard';         
+              }
+              //transform colors array to string comma sepperated...
+              $colorsString = '';
+              foreach ($_POST['colors'] as $element2) {
+                $colorsString .= $element2 . ',';
+              }
+              $colorsString = substr($colorsString, 0, -1);
+              ////////////////////
+              $_POST['name'] = str_replace("'","''",$_POST['name']);
+              $_POST['description'] = str_replace("'","''",$_POST['description']);
+              //store product...
+              $product = new product(
+                $_POST['name'],
+                $_POST['description'],
+                $_POST['tages'],
+                $_POST['category'],
+                $colorsString,
+                $_POST['price'],
+                $sizesString,
+                $_POST['quantity'],
+                $_FILES['file']['name'][0],
+                $_POST['brand']
+              );
+              $idProduct = $product->insertProduct();
+              //imgs
+              for($i=0;$i<count($_FILES['file']['name']);$i++){
+                $img_dir = './../fill-rouge/view/uploads/';
+                $fileName = $_FILES['file']['name'][$i];
+                //upload img...
+                move_uploaded_file($_FILES['file']['tmp_name'][$i],$img_dir.$fileName);
+                //store img...
+                $img = new ProductImg($fileName,$img_dir,$idProduct);
+                $img->insertProductImg();
+                $_SESSION['productAdded'] = true;
+                header('Location: http://localhost/fill-rouge-admin/admin/index');
             }
-            $sizesString = substr($sizesString, 0, -1);
-            } else {
-            $sizesString = '';         
-            }
-            //transform colors array to string comma sepperated...
-            $colorsString = '';
-            foreach ($_POST['colors'] as $element2) {
-              $colorsString .= $element2 . ',';
-            }
-            $colorsString = substr($colorsString, 0, -1);
-            ////////////////////
-            $_POST['name'] = str_replace("'","''",$_POST['name']);
-            $_POST['description'] = str_replace("'","''",$_POST['description']);
-            //store product...
-            $product = new product(
-              $_POST['name'],
-              $_POST['description'],
-              $_POST['tages'],
-              $_POST['category'],
-              $colorsString,
-              $_POST['price'],
-              $sizesString,
-              $_POST['quantity'],
-              $_FILES['file']['name'][0],
-              $_POST['brand']
-            );
-            $idProduct = $product->insertProduct();
-            //imgs
-            for($i=0;$i<count($_FILES['file']['name']);$i++){
-              $img_dir = './../fill-rouge/view/uploads/';
-              $fileName = $_FILES['file']['name'][$i];
-              //upload img...
-              move_uploaded_file($_FILES['file']['tmp_name'][$i],$img_dir.$fileName);
-              //store img...
-              $img = new ProductImg($fileName,$img_dir,$idProduct);
-              $img->insertProductImg();
-              $_SESSION['productAdded'] = true;
-              header('Location: http://localhost/fill-rouge-admin/admin/index');
-           }
+           }else {
+             $colors = true;
+           } 
           }else {
             $brand =true;
           }

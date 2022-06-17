@@ -49,9 +49,13 @@ function __construct($name_item , $description_item , $tages_item , $category_it
    $this->first_img,
    $this->brand]
   ); 
-
-
  }
+
+ public static function selectAllProducts()
+  {
+    $ctn = new Connection();
+    return $ctn->selectAllProducts('products');
+  }
 
 
 

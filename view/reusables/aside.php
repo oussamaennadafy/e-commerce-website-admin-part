@@ -66,7 +66,7 @@
 
           <li class="hover:bg-blue-100 relative">
             <a
-              href="#"
+              href="http://localhost/fill-rouge-admin/admin/showProducts"
               class="flex px-5 py-3 items-center w-full text-white hover:text-white hover:bg-blue-700"
             >
               <span aria-hidden="true">
